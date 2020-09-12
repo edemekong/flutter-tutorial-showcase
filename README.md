@@ -1,6 +1,8 @@
 # flutter_tutorials
-
+# by NEERD DEVELOPERS... PaulVin
 The enhance of creating these project to enable flutter dev learn from stuff I have known so far...
+
+# VIDEO TUTORIALS
 
 ## Getting Started
 
