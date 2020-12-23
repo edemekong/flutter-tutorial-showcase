@@ -66,7 +66,7 @@ class _AppTextFieldState extends State<AppTextField> {
           filled: true,
           fillColor: Colors.white,
           hintText: widget.title,
-          hintStyle: TextStyle(fontSize: 14),
+          hintStyle: TextStyle(fontSize: 16),
         ),
       ),
     );

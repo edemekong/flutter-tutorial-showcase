@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorials/image_asset/image_assets.dart';
 import 'package:flutter_tutorials/ui/home_view/widget/suggested_compliment.dart';
+import 'package:flutter_tutorials/ui/widgets/header_text.dart';
 import 'package:flutter_tutorials/ui/widgets/painter.dart';
 
 import 'home.dart';
@@ -37,27 +38,6 @@ class HomeView extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class HeaderText extends StatelessWidget {
-  const HeaderText({
-    Key key,
-    this.text,
-  }) : super(key: key);
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      child: Text(
-        '$text',
-        style: TextStyle(
-            fontSize: 16, fontWeight: FontWeight.w600, color: Colors.grey[800]),
       ),
     );
   }
