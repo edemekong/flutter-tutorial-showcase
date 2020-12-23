@@ -7,8 +7,8 @@ class ComplimentModel extends ChangeNotifier {
   var subjectController = TextEditingController();
   var messageController = TextEditingController();
 
-  void setComplimentToField(Compliment compliment) {
-    scrollController.animateTo(
+  void setComplimentToField(Compliment compliment) async {
+    await scrollController.animateTo(
       scrollController.position.minScrollExtent,
       duration: Duration(milliseconds: 400),
       curve: Curves.fastOutSlowIn,

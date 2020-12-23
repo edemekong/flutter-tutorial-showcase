@@ -18,7 +18,7 @@ class InputView extends StatelessWidget {
         children: [
           SizedBox(height: 70),
           AppTextField(
-            title: 'To: e.g doe@mail.com',
+            title: 'To:',
             controller: complimentModel.toController,
           ),
           SizedBox(height: 10),
