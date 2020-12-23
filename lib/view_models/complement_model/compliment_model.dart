@@ -2,11 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_tutorials/models/compliment/compliment.dart';
 
 class ComplimentModel extends ChangeNotifier {
+  final scrollController = ScrollController();
   var toController = TextEditingController();
   var subjectController = TextEditingController();
   var messageController = TextEditingController();
 
   void setComplimentToField(Compliment compliment) {
+    scrollController.animateTo(
+      scrollController.position.minScrollExtent,
+      duration: Duration(milliseconds: 400),
+      curve: Curves.fastOutSlowIn,
+    );
     subjectController.text = compliment?.subject;
     messageController.text = compliment?.message;
     notifyListeners();

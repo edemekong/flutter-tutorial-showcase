@@ -14,10 +14,11 @@ class InputView extends StatelessWidget {
         Provider.of<ComplimentModel>(context, listen: false);
     return Container(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          SizedBox(height: 100),
+          SizedBox(height: 70),
           AppTextField(
-            title: 'To:',
+            title: 'To: e.g doe@mail.com',
             controller: complimentModel.toController,
           ),
           SizedBox(height: 10),
@@ -31,6 +32,17 @@ class InputView extends StatelessWidget {
             maxLine: 10,
             controller: complimentModel.messageController,
           ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: FlatButton.icon(
+              label: Text('Send'),
+              onPressed: () {},
+              shape: StadiumBorder(),
+              textColor: Colors.white,
+              color: Colors.red,
+              icon: Icon(Icons.send),
+            ),
+          )
         ],
       ),
     );
