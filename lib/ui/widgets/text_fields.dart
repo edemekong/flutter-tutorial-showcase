@@ -6,7 +6,6 @@ class AppTextField extends StatefulWidget {
   final TextInputType keyboardType;
   final int maxLine;
   final Function(String) validator;
-
   final Function onTapVisibilityIcon;
   final Function(String) onFieldSubmitted;
   final bool isPassword;

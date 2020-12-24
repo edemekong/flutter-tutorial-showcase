@@ -1,11 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_tutorials/models/compliment/compliment.dart';
+import 'package:flutter_tutorials/services/compliment_api/compliment_api.dart';
+import 'package:get_it/get_it.dart';
 
 class ComplimentModel extends ChangeNotifier {
   final scrollController = ScrollController();
   var toController = TextEditingController();
   var subjectController = TextEditingController();
   var messageController = TextEditingController();
+
+  final complimentApi = GetIt.I.get<ComplimentApi>();
+
+  sendCompliment() async {
+    var compliment = Compliment();
+    compliment.id = DateTime.now().toString();
+    compliment.subject = subjectController.text;
+    compliment.message = messageController.text;
+    await complimentApi.sendCompliments(compliment.id, compliment.toDoc());
+  }
 
   void setComplimentToField(Compliment compliment) async {
     await scrollController.animateTo(
