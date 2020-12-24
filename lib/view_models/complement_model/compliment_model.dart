@@ -8,12 +8,12 @@ class ComplimentModel extends ChangeNotifier {
   var toController = TextEditingController();
   var subjectController = TextEditingController();
   var messageController = TextEditingController();
-
   final complimentApi = GetIt.I.get<ComplimentApi>();
 
   sendCompliment() async {
     var compliment = Compliment();
     compliment.id = DateTime.now().toString();
+    compliment.to = toController.text;
     compliment.subject = subjectController.text;
     compliment.message = messageController.text;
     await complimentApi.sendCompliments(compliment.id, compliment.toDoc());

@@ -36,11 +36,13 @@ class InputView extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: FlatButton.icon(
               label: Text('Send'),
-              onPressed: () {},
               shape: StadiumBorder(),
               textColor: Colors.white,
               color: Colors.red,
               icon: Icon(Icons.send),
+              onPressed: () {
+                complimentModel.sendCompliment();
+              },
             ),
           )
         ],
