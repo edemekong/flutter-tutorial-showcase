@@ -1,39 +1,76 @@
 {
-  "project_info": {
-    "project_number": "515517653248",
-    "project_id": "christmas-app-883a1",
-    "storage_bucket": "christmas-app-883a1.appspot.com"
-  },
-  "client": [
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:515517653248:android:fbc0ebc60b7d4028d2d3e5",
-        "android_client_info": {
-          "package_name": "com.neerddev.flutter_tutorials"
+    "project_info": {
+      "project_number": "515517653248",
+      "project_id": "christmas-app-883a1",
+      "storage_bucket": "christmas-app-883a1.appspot.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:515517653248:android:239b243d4732aebdd2d3e5",
+          "android_client_info": {
+            "package_name": "com.devscore.flutter_tutorials"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "515517653248-v3q17vvbudff9mga9s7h9mro849gv8fk.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyC7sg0MsbNtAVc6rwaGi9GuSBKT3qdjeTs"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "515517653248-v3q17vvbudff9mga9s7h9mro849gv8fk.apps.googleusercontent.com",
+                "client_type": 3
+              }
+            ]
+          }
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "515517653248-v3q17vvbudff9mga9s7h9mro849gv8fk.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyC7sg0MsbNtAVc6rwaGi9GuSBKT3qdjeTs"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "515517653248-v3q17vvbudff9mga9s7h9mro849gv8fk.apps.googleusercontent.com",
-              "client_type": 3
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:515517653248:android:fbc0ebc60b7d4028d2d3e5",
+          "android_client_info": {
+            "package_name": "com.neerddev.flutter_tutorials"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "515517653248-03jc0mdlf5v4m7oq43a4vvvicknjqbcs.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "com.neerddev.flutter_tutorials",
+              "certificate_hash": "1ec09ff44c8904bde8004461b0fa96efbcde5939"
             }
-          ]
+          },
+          {
+            "client_id": "515517653248-v3q17vvbudff9mga9s7h9mro849gv8fk.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyC7sg0MsbNtAVc6rwaGi9GuSBKT3qdjeTs"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "515517653248-v3q17vvbudff9mga9s7h9mro849gv8fk.apps.googleusercontent.com",
+                "client_type": 3
+              }
+            ]
+          }
         }
       }
-    }
-  ],
-  "configuration_version": "1"
-}
+    ],
+    "configuration_version": "1"
+  }

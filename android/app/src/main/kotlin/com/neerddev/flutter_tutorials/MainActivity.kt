@@ -1,4 +1,4 @@
-package com.neerddev.flutter_tutorials
+package com.devscore.flutter_tutorials
 
 import io.flutter.embedding.android.FlutterActivity
 

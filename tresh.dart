@@ -16,43 +16,43 @@
 // //     });
 // //   }
 
-// //   Future<String> createReferralLink(String referralCode) async {
-// //     final DynamicLinkParameters dynamicLinkParameters = DynamicLinkParameters(
-// //       uriPrefix: 'https://neerddev.page.link',
-// //       link: Uri.parse('https:mydailyXpress.com/refer?code=$referralCode'),
-// //       androidParameters: AndroidParameters(
-// //         packageName: 'com.neerddev.my_daily_wash',
-// //       ),
-// //       socialMetaTagParameters: SocialMetaTagParameters(
-// //         title: 'Refer A Friend',
-// //         description:
-// //             'Refer and earn',
-// //         imageUrl: Uri.parse(
-// //             'https://www.insperity.com/wp-content/uploads/Referral-_Program1200x600.png'),
-// //       ),
-// //     );
+// Future<String> createReferralLink(String referralCode) async {
+//   final DynamicLinkParameters dynamicLinkParameters = DynamicLinkParameters(
+//     uriPrefix: 'https://neerddev.page.link',
+//     link: Uri.parse('https:mydailyXpress.com/refer?code=$referralCode'),
+//     androidParameters: AndroidParameters(
+//       packageName: 'com.neerddev.my_daily_wash',
+//     ),
+//     socialMetaTagParameters: SocialMetaTagParameters(
+//       title: 'Refer A Friend',
+//       description:
+//           'Refer and earn',
+//       imageUrl: Uri.parse(
+//           'https://www.insperity.com/wp-content/uploads/Referral-_Program1200x600.png'),
+//     ),
+//   );
 
-// //     final ShortDynamicLink shortLink =
-// //         await dynamicLinkParameters.buildShortLink();
-// //     final Uri dynamicUrl = shortLink.shortUrl;
-// //     return dynamicUrl.toString();
-// //   }
+//   final ShortDynamicLink shortLink =
+//       await dynamicLinkParameters.buildShortLink();
+//   final Uri dynamicUrl = shortLink.shortUrl;
+//   return dynamicUrl.toString();
+// }
 
 // //   void _handleDeepLink(PendingDynamicLinkData data) {
-// //     final Uri deepLink = data?.link;
-// //     if (deepLink != null) {
-// //       var isRefer = deepLink.pathSegments.contains('refer');
-// //       if (isRefer) {
-// //         var code = deepLink.queryParameters['code'];
-// //         if (code != null) {
-// //           // RouteGenerator.navigateTo(
-// //           //   SignUpLogin.routeName,
-// //           //   args: code,
-// //           // );
-// //         }
-// //       }
-// //     }
-// //   }
+// final Uri deepLink = data?.link;
+// if (deepLink != null) {
+//   var isRefer = deepLink.pathSegments.contains('refer');
+//   if (isRefer) {
+//     var code = deepLink.queryParameters['code'];
+//     if (code != null) {
+//       // RouteGenerator.navigateTo(
+//       //   SignUpLogin.routeName,
+//       //   args: code,
+//       // );
+//     }
+//   }
+//   }
+// }
 // // }
 
 import 'package:flutter/material.dart';

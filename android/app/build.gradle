@@ -40,7 +40,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.neerddev.flutter_tutorials"
+        applicationId "com.devscore.flutter_tutorials"
         minSdkVersion 16
         targetSdkVersion 29
         multiDexEnabled true
