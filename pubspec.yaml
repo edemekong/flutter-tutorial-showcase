@@ -21,6 +21,9 @@ dependencies:
   get_it: ^5.0.3
   firebase_dynamic_links: ^0.6.3
   cloud_firestore: ^0.14.4
+
+
+  
   http: ^0.12.2
 
 
