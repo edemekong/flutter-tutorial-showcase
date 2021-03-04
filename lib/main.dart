@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_tutorials/services/user_api.dart';
 import 'package:flutter_tutorials/ui/views/home_view.dart';
+import 'package:get_it/get_it.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  setUp();
   runApp(MyApp());
+}
+
+final locator = GetIt.I;
+setUp() {
+  locator.registerLazySingleton(() => UserApi());
 }
 
 class MyApp extends StatelessWidget {
