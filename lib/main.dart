@@ -2,7 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-main() => runApp(MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -28,13 +28,17 @@ class _HomeViewState extends State<HomeView> {
           slivers: [
             SliverPersistentHeader(
               delegate: PersitentAppbar(
-                appbarHeight: 200,
+                appbarMaxHeight: 200,
+                appBarMinHeight: 60,
               ),
               floating: true,
               pinned: true,
             ),
             SliverList(
-              delegate: SliverChildBuilderDelegate((_, index) => Item()),
+              delegate: SliverChildBuilderDelegate(
+                (_, index) => Items(),
+                childCount: 100,
+              ),
             ),
           ],
         ),
@@ -43,31 +47,84 @@ class _HomeViewState extends State<HomeView> {
   }
 }
 
-class ListItems extends StatelessWidget {
-  final ScrollController controller;
+class PersitentAppbar extends SliverPersistentHeaderDelegate {
+  final double appbarMaxHeight;
+  final double appBarMinHeight;
 
-  const ListItems({Key key, this.controller}) : super(key: key);
+  final double offset;
+  final FloatingHeaderSnapConfiguration snap;
+  final tabber;
+  PersitentAppbar({
+    this.appBarMinHeight,
+    @required this.appbarMaxHeight,
+    this.offset,
+    this.snap,
+    this.tabber,
+  });
+
   @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      controller: controller,
-      itemCount: 9999,
-      itemBuilder: (_, i) {
-        return Item();
-      },
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    final firstBarOffset = (-shrinkOffset * 0.01) - shrinkOffset;
+    final secondBarOffset = (-shrinkOffset * 0.01) - shrinkOffset + 60;
+    return Container(
+      color: Colors.white,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          Positioned(
+            top: secondBarOffset < -1.00 ? -1 : secondBarOffset,
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              child: Wrap(
+                children: [
+                  AppLogoWithText(),
+                  // This shruck out of view
+                  ExtendedItem(),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: firstBarOffset,
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              child: Wrap(
+                children: [
+                  // This shruck out of view
+                  ExtendedItem(),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
+
+  @override
+  double get maxExtent => appbarMaxHeight;
+
+  @override
+  double get minExtent => appBarMinHeight;
+
+  @override
+  FloatingHeaderSnapConfiguration get snapConfiguration => snap;
+
+  @override
+  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) => true;
 }
 
-class Item extends StatelessWidget {
+class Items extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     return Container(
+      padding: const EdgeInsets.all(8),
       height: 100,
       width: width - 48,
       child: RandomColorBox(),
-    ).addPadding();
+    );
   }
 }
 
@@ -95,40 +152,7 @@ class ExtendedItem extends StatelessWidget {
   }
 }
 
-class TitleTextSection extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          margin: const EdgeInsets.only(right: 8),
-          height: 50,
-          width: 50,
-          child: RandomColorBox(),
-        ),
-        Text(
-          'Title Text',
-        ).addPadding(),
-      ],
-    );
-  }
-}
-
-class RandomColorBox extends StatelessWidget {
-  final Color color;
-
-  RandomColorBox()
-      : color = Colors.primaries[Random().nextInt(Colors.primaries.length)];
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: color,
-    );
-  }
-}
-
-class ShrunkItem extends StatelessWidget {
+class AppLogoWithText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -142,72 +166,36 @@ class ShrunkItem extends StatelessWidget {
   }
 }
 
-extension _padding on Widget {
-  Widget addPadding() => Padding(
-        padding: EdgeInsets.all(8),
-        child: this,
-      );
-}
-
-class PersitentAppbar extends SliverPersistentHeaderDelegate {
-  final double appbarHeight;
-  final double offset;
-  final FloatingHeaderSnapConfiguration snap;
-  final tabber;
-  PersitentAppbar({
-    @required this.appbarHeight,
-    this.offset,
-    this.snap,
-    this.tabber,
-  });
-
+class TitleTextSection extends StatelessWidget {
   @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    final firstBarOffset = (-shrinkOffset * 0.01) - shrinkOffset;
-    final secondBarOffset = (-shrinkOffset * 0.01) - shrinkOffset + 60;
-    return Container(
-      color: Colors.white,
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          Positioned(
-            top: secondBarOffset < -1.00 ? -1 : secondBarOffset,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              child: Wrap(
-                children: [
-                  ShrunkItem(),
-                  ExtendedItem(),
-                ],
-              ),
-            ),
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Container(
+          margin: const EdgeInsets.only(right: 8),
+          height: 50,
+          width: 50,
+          child: RandomColorBox(),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'Sophisticated Scroll',
           ),
-          Positioned(
-            top: firstBarOffset,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              child: Wrap(
-                children: [
-                  ExtendedItem(),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
+}
+
+class RandomColorBox extends StatelessWidget {
+  final Color color;
+
+  RandomColorBox()
+      : color = Colors.primaries[Random().nextInt(Colors.primaries.length)];
 
   @override
-  double get maxExtent => appbarHeight;
-
-  @override
-  double get minExtent => 60;
-
-  @override
-  FloatingHeaderSnapConfiguration get snapConfiguration => snap;
-
-  @override
-  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) => true;
+  Widget build(BuildContext context) {
+    return Container(color: color);
+  }
 }
