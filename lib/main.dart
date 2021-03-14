@@ -36,7 +36,9 @@ class _HomeViewState extends State<HomeView> {
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate(
-                (_, index) => Items(),
+                (_, index) => Items(
+                  title: 'Item $index',
+                ),
                 childCount: 100,
               ),
             ),
@@ -51,22 +53,16 @@ class PersitentAppbar extends SliverPersistentHeaderDelegate {
   final double appbarMaxHeight;
   final double appBarMinHeight;
 
-  final double offset;
   final FloatingHeaderSnapConfiguration snap;
-  final tabber;
-  PersitentAppbar({
-    this.appBarMinHeight,
-    @required this.appbarMaxHeight,
-    this.offset,
-    this.snap,
-    this.tabber,
-  });
+  PersitentAppbar(
+      {this.appBarMinHeight, @required this.appbarMaxHeight, this.snap});
 
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     final firstBarOffset = (-shrinkOffset * 0.01) - shrinkOffset;
     final secondBarOffset = (-shrinkOffset * 0.01) - shrinkOffset + 60;
+
     return Container(
       color: Colors.white,
       child: Stack(
@@ -116,14 +112,24 @@ class PersitentAppbar extends SliverPersistentHeaderDelegate {
 }
 
 class Items extends StatelessWidget {
+  final String title;
+
+  const Items({Key key, this.title}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     return Container(
       padding: const EdgeInsets.all(8),
+      margin: const EdgeInsets.all(4),
       height: 100,
       width: width - 48,
-      child: RandomColorBox(),
+      color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
+      child: Text(
+        title,
+        style:
+            Theme.of(context).textTheme.headline6.copyWith(color: Colors.white),
+      ),
     );
   }
 }
@@ -142,10 +148,11 @@ class ExtendedItem extends StatelessWidget {
             height: 8,
           ),
           Container(
-              height: 50,
-              width: width - 48,
-              padding: const EdgeInsets.only(bottom: 8),
-              child: RandomColorBox()),
+            height: 50,
+            width: width - 48,
+            padding: const EdgeInsets.only(bottom: 8),
+            color: Colors.blue,
+          ),
         ],
       ),
     );
@@ -175,7 +182,7 @@ class TitleTextSection extends StatelessWidget {
           margin: const EdgeInsets.only(right: 8),
           height: 50,
           width: 50,
-          child: RandomColorBox(),
+          color: Colors.black,
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -185,17 +192,5 @@ class TitleTextSection extends StatelessWidget {
         ),
       ],
     );
-  }
-}
-
-class RandomColorBox extends StatelessWidget {
-  final Color color;
-
-  RandomColorBox()
-      : color = Colors.primaries[Random().nextInt(Colors.primaries.length)];
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(color: color);
   }
 }
