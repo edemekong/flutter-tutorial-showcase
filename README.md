@@ -3,7 +3,7 @@
 This repository is solely for flutter tutorials I make for learning to teaching. 
 ## We are on YOUTUBE and all tutorial branches are available on youtube as video tutorial!!
 You can see all video tutorials below link.
-### Flutter Developer's Core [Visit here](https://www.youtube.com/channel/UC1fuQBjVLSqwk-PgdeeMAyQ)
+### Flutter Fairy [Visit here](https://www.youtube.com/channel/UC1fuQBjVLSqwk-PgdeeMAyQ)
 
 
 # Install Flutter
