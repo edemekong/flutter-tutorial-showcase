@@ -15,7 +15,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.3
-  sticky_web_scroll: ^0.0.2
+  intl:
 
 dev_dependencies:
   flutter_test:

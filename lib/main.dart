@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Sticky Web Showcase',
+      title: 'Using Extension; Fast UI & Dart Tips',
       theme: ThemeData(
         primaryColor: Colors.blueAccent,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -18,5 +18,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
