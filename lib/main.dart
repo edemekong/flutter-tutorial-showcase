@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Using Extension; Fast UI & Dart Tips',
+      title: 'Customize Expandable Widget',
       theme: ThemeData(
         primaryColor: Colors.blueAccent,
         visualDensity: VisualDensity.adaptivePlatformDensity,
