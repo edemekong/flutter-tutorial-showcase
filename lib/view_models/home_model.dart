@@ -36,30 +36,28 @@ class HomeModel extends ChangeNotifier {
   Future<void> convertImagesFileToPDF() async {
     _homeState = HomeState.Loading;
     notifyListeners();
-    try {
-      for (var index = 0; index < imagesFile.length; index++) {
-        final image = pw.MemoryImage(imagesFile[index].readAsBytesSync());
+    for (int index = 0; index < imagesFile.length; index++) {
+      final image = pw.MemoryImage(imagesFile[index].readAsBytesSync());
 
-        _pdf.addPage(
-          pw.Page(
-            pageFormat: PdfPageFormat.a4,
-            build: (pw.Context context) {
-              return pw.Center(
-                child: pw.Image(image),
-              ); // Center
-            },
-          ),
-        );
+      _pdf.addPage(
+        pw.Page(
+          pageFormat: PdfPageFormat.a4,
+          build: (pw.Context context) {
+            return pw.AspectRatio(
+                aspectRatio: 1.9,
+                child: pw.Container(
+                  decoration: pw.BoxDecoration(image: pw.DecorationImage(image: pw.MemoryImage(image.bytes))),
+                  // child: pw.Image(image),
+                )); // Center
+          },
+        ),
+      );
 
-        final output = await getExternalStorageDirectory();
-        print("${output.path}/example.pdf");
-        final file = File("${output.path}/document${DateTime.now()}.pdf");
-        await file.writeAsBytes(await _pdf.save());
-        _homeState = HomeState.Loaded;
-        notifyListeners();
-      }
-    } catch (e) {
-      _homeState = HomeState.Error;
+      final output = await getExternalStorageDirectory();
+      print("${output.path}/example.pdf");
+      final file = File("${output.path}/document${DateTime.now()}.pdf");
+      await file.writeAsBytes(await _pdf.save());
+      _homeState = HomeState.Loaded;
       notifyListeners();
     }
   }
@@ -73,17 +71,11 @@ class HomeModel extends ChangeNotifier {
     print(images.length);
 
     _pdf.addPage(
-      pw.Page(
+      pw.MultiPage(
         pageFormat: PdfPageFormat.a4,
         build: (pw.Context context) {
-          return pw.ListView.builder(
-            itemCount: images.length,
-            itemBuilder: (pw.Context context, int index) {
-              return pw.Padding(
-                  padding: const pw.EdgeInsets.all(18),
-                  child: pw.Image(images[index]));
-            },
-          );
+          return List.generate(images.length,
+              (index) => pw.Padding(padding: const pw.EdgeInsets.all(18), child: pw.Image(images[index])));
         },
       ),
     );
