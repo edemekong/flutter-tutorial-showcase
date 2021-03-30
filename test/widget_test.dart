@@ -28,3 +28,32 @@ void main() {
     expect(find.text('1'), findsOneWidget);
   });
 }
+
+// Future<void> convertImagesFileToPDF() async {
+//     _homeState = HomeState.Loading;
+//     notifyListeners();
+//     for (int index = 0; index < imagesFile.length; index++) {
+//       final image = pw.MemoryImage(imagesFile[index].readAsBytesSync());
+
+//       _pdf.addPage(
+//         pw.Page(
+//           pageFormat: PdfPageFormat.a4,
+//           build: (pw.Context context) {
+//             return pw.AspectRatio(
+//                 aspectRatio: 1.9,
+//                 child: pw.Container(
+//                   decoration: pw.BoxDecoration(image: pw.DecorationImage(image: pw.MemoryImage(image.bytes))),
+//                   // child: pw.Image(image),
+//                 )); // Center
+//           },
+//         ),
+//       );
+
+//       final output = await getExternalStorageDirectory();
+//       print("${output.path}/example.pdf");
+//       final file = File("${output.path}/document${DateTime.now()}.pdf");
+//       await file.writeAsBytes(await _pdf.save());
+//       _homeState = HomeState.Loaded;
+//       notifyListeners();
+//     }
+//   }
