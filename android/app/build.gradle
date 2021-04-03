@@ -21,7 +21,7 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-apply plugin: 'com.google.gms.google-services'
+// apply plugin: 'com.google.gms.google-services'
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
@@ -43,7 +43,6 @@ android {
         applicationId "com.devscore.flutter_tutorials"
         minSdkVersion 16
         targetSdkVersion 29
-        multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -63,7 +62,6 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:multidex:1.0.3'
-    implementation platform('com.google.firebase:firebase-bom:26.2.0')
-    implementation 'com.google.firebase:firebase-analytics'
+    // implementation platform('com.google.firebase:firebase-bom:26.2.0')
+    // implementation 'com.google.firebase:firebase-analytics'
 }
