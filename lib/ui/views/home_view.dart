@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorials/ui/views/map_view.dart';
-import 'package:flutter_tutorials/view_model/map_model/map_model.dart';
 import 'package:flutter_tutorials/view_model/user_model.dart';
 import 'package:provider/provider.dart';
 
@@ -9,7 +8,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('List Of Users'),
+        title: Text('Display User On Map'),
       ),
       body: Builder(builder: (context) {
         final model = Provider.of<UserModel>(context);
@@ -27,16 +26,20 @@ class HomeView extends StatelessWidget {
             final user = users[index];
             return ListTile(
               title: Text(user.name),
+              leading: CircleAvatar(
+                child: Text(user.name.substring(0, 1)),
+              ),
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MapView()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MapView(user: user)));
               },
-              subtitle: Text(user.address.street),
+              subtitle: Text(user.email),
             );
           },
         );
       }),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.map),
+          backgroundColor: Colors.red,
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) => MapView()));
           }),

@@ -22,7 +22,10 @@ class MapView extends StatelessWidget {
                     children: <Widget>[
                       GoogleMap(
                         mapType: MapType.normal,
-                        initialCameraPosition: CameraPosition(target: mapModel.userPosition, zoom: 10),
+                        initialCameraPosition: CameraPosition(
+                            target:
+                                mapModel.userPosition == null ? LatLng(29.457200, -164.299000) : mapModel.userPosition,
+                            zoom: mapModel.userPosition == null ? 2 : 10),
                         myLocationEnabled: true,
                         onMapCreated: mapModel.onMapCreate,
                         onCameraMove: mapModel.onCameraMoved,
