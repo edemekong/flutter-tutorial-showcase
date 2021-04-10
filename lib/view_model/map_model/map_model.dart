@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorials/models/geopoint.dart';
+import 'package:flutter_tutorials/models/nearby.dart';
 import 'package:flutter_tutorials/models/user.dart';
 import 'package:flutter_tutorials/services/map_api.dart';
+import 'package:flutter_tutorials/services/nearby_location_api.dart';
 import 'package:flutter_tutorials/services/user_api.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapModel extends ChangeNotifier {
   GoogleMapController _mapController;
-  final googleMapApi = GoogleMapApi.instance;
 
   String userPositionName = '';
   LatLng userPosition;
+  List<Nearby> nearbyLocations = <Nearby>[];
 
   GoogleMapController get mapController => _mapController;
   List<User> users = [];
@@ -58,6 +60,18 @@ class MapModel extends ChangeNotifier {
       _markers.add(Marker(
           markerId: MarkerId(placeName),
           position: points,
+          onTap: () async {
+            final List<Nearby> result = await NearcyLocationApi.instance.getNearby(
+                userLocation:
+                    // markerPosition,
+                    GeoPoint(4.8119283, 7.046236272219636),
+                radius: 1000,
+                type: 'restaurants',
+                keyword: '');
+            nearbyLocations = result;
+
+            notifyListeners();
+          },
           infoWindow: InfoWindow(
             title: placeName,
             snippet: "${marks.name},${marks.locality}, ${marks.administrativeArea}",

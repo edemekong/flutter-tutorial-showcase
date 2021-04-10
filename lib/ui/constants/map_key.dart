@@ -1,3 +1,3 @@
 class MapKey {
-  static const String apiKey = "api key";
+  static const String apiKey = "";
 }
