@@ -12,12 +12,12 @@ class UserRepository {
   UserRepository._();
   static UserRepository? _instance;
 
-  static UserRepository? get instance {
+  static UserRepository get instance {
     _instance ??= UserRepository._();
-    return _instance;
+    return _instance!;
   }
 
-  ValueNotifier<User?> currentUserNotifier = ValueNotifier<User?>(null);
+  ValueNotifier<User> currentUserNotifier = ValueNotifier<User>(User.empty());
 
   User? get user {
     return currentUserNotifier.value;
@@ -26,7 +26,7 @@ class UserRepository {
   listenToCurrentUser(String uid) {
     final snapshot = FirebaseFirestore.instance.collection('users').doc(uid).snapshots();
     snapshot.listen((event) {
-      final user = User.fromJson(event.id, event.data() as Map<String, dynamic>);
+      final user = User.fromJson(event.data() as Map<String, dynamic>);
       currentUserNotifier.value = user;
       notifyListenersUser();
     });
@@ -71,7 +71,7 @@ class UserRepository {
     DocumentSnapshot userSnapshot = await FirebaseFirestore.instance.collection('users').doc(uid).get();
     debugPrint("user Id ${userSnapshot.data()}");
     if (userSnapshot.exists) {
-      return User.fromJson(userSnapshot.id, userSnapshot.data() as Map<String, dynamic>);
+      return User.fromJson(userSnapshot.data() as Map<String, dynamic>);
     } else {
       return User.empty();
     }
@@ -83,7 +83,7 @@ class UserRepository {
 
     final userSnapshot = docSnapshots.docs.first;
     if (userSnapshot.exists) {
-      return User.fromJson(userSnapshot.id, userSnapshot.data());
+      return User.fromJson(userSnapshot.data());
     } else {
       return User.empty();
     }
@@ -121,7 +121,7 @@ class UserRepository {
   }
 
   Future<void> listenToCurrentAuth() async {
-    if (UserRepository.instance?.user == null) {
+    if (UserRepository.instance.user == null) {
       var fbUser = auth.FirebaseAuth.instance.currentUser;
       if (fbUser == null) {
         try {
@@ -139,7 +139,6 @@ class UserRepository {
         currentUserNotifier.value = user;
         debugPrint(user.uid);
         listenToCurrentUser(user.uid);
-
         notifyListenersUser();
       }
     }

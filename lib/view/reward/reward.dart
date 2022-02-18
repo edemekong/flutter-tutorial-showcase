@@ -14,10 +14,10 @@ class RewardView extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        body: ValueListenableBuilder<User?>(
-          valueListenable: UserRepository.instance!.currentUserNotifier,
+        body: ValueListenableBuilder<User>(
+          valueListenable: UserRepository.instance.currentUserNotifier,
           builder: (context, value, widget) {
-            if (value != null) {
+            if (value != User.empty()) {
               return Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
@@ -40,7 +40,7 @@ class RewardView extends StatelessWidget {
                     const SizedBox(height: 30),
                     TextButton(
                       onPressed: () {
-                        state.userRepo?.logOutUser();
+                        state.userRepo.logOutUser();
                       },
                       child: Text('Log out', style: Theme.of(context).textTheme.headline6?.copyWith(color: Colors.red)),
                     )

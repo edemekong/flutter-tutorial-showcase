@@ -15,9 +15,9 @@ class User {
     required this.reward,
   });
 
-  factory User.fromJson(String docId, Map<String, dynamic> data) {
+  factory User.fromJson(Map<String, dynamic> data) {
     return User(
-      uid: docId,
+      uid: data['uid'] ?? '',
       name: data['name'] ?? '',
       email: data['email'] ?? '',
       referCode: data['refer_code'] ?? '',
@@ -33,7 +33,25 @@ class User {
       email: '',
       referCode: '',
       referLink: '',
-      reward: 100,
+      reward: 0,
     );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is User &&
+        other.uid == uid &&
+        other.email == email &&
+        other.name == name &&
+        other.referCode == referCode &&
+        other.referLink == referLink &&
+        other.reward == reward;
+  }
+
+  @override
+  int get hashCode {
+    return uid.hashCode ^ email.hashCode ^ name.hashCode ^ referCode.hashCode ^ referLink.hashCode ^ reward.hashCode;
   }
 }

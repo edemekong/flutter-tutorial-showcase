@@ -23,7 +23,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-    UserRepository.instance?.listenToCurrentAuth();
+    UserRepository.instance.listenToCurrentAuth();
     super.initState();
   }
 

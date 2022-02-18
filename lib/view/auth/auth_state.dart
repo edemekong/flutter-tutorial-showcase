@@ -31,9 +31,9 @@ class AuthState extends ChangeNotifier {
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
       changeIsLoading = true;
       if (_signInState == SignInState.login) {
-        await userRepo?.logIn(emailController.text, passwordController.text);
+        await userRepo.logIn(emailController.text, passwordController.text);
       } else if (_signInState == SignInState.signup) {
-        await userRepo?.registerUser(nameController.text, emailController.text, passwordController.text,
+        await userRepo.registerUser(nameController.text, emailController.text, passwordController.text,
             referrerCode: deepLinkRepo?.referrerCode.value ?? '');
       }
       changeIsLoading = false;
