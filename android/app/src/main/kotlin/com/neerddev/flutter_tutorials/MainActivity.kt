@@ -1,4 +1,4 @@
-package com.neerddev.flutter_tutorials
+package com.flutterfairy.showcasing_flutter
 
 import io.flutter.embedding.android.FlutterActivity
 
