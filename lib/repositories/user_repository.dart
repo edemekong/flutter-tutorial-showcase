@@ -48,7 +48,9 @@ class UserRepository {
   Future<User?> registerUser(String name, String email, String password, {String referrerCode = ''}) async {
     final uid = await AuthService.instance?.signUp(email, password);
     final referCode = CodeGenerator.generateCode('refer');
+
     final referLink = await DeepLinkService.instance?.createReferLink(referCode);
+
     await FirebaseFirestore.instance.collection('users').doc(uid).set({
       'name': name,
       'email': email,
@@ -82,6 +84,7 @@ class UserRepository {
         await FirebaseFirestore.instance.collection('users').where('refer_code', isEqualTo: referCode).get();
 
     final userSnapshot = docSnapshots.docs.first;
+
     if (userSnapshot.exists) {
       return User.fromJson(userSnapshot.data());
     } else {

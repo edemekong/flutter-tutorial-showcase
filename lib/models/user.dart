@@ -1,10 +1,10 @@
 class User {
-  String uid;
-  String email;
-  String name;
-  String referCode;
-  String referLink;
-  int reward;
+  final String uid;
+  final String email;
+  final String name;
+  final String referCode;
+  final String referLink;
+  final int reward;
 
   User({
     required this.uid,

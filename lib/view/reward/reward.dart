@@ -63,12 +63,9 @@ class RewardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = RewardState();
-    return ChangeNotifierProvider(
-      create: (_) => state,
-      child: ChangeNotifierProvider.value(
-        value: state,
-        child: const RewardView(),
-      ),
+    return ChangeNotifierProvider.value(
+      value: state,
+      child: const RewardView(),
     );
   }
 }
