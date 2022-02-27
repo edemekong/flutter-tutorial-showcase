@@ -57,6 +57,7 @@ class UserRepository {
       'uid': uid,
       'refer_link': referLink,
       'refer_code': referCode,
+      "referral_code": referrerCode,
       'reward': 0,
     });
 
@@ -64,9 +65,9 @@ class UserRepository {
     listenToCurrentUser(uid);
     notifyListenersUser();
 
-    if (referrerCode.isNotEmpty) {
-      await rewardUser(uid, referrerCode);
-    }
+    // if (referrerCode.isNotEmpty) {
+    //   await rewardUser(uid, referrerCode);
+    // }
   }
 
   Future<User> getUser(String uid) async {
