@@ -4,5 +4,5 @@ class Place {
   final String locality;
   final String country;
 
-  Place({this.name, this.street, this.locality, this.country});
+  Place({required this.name, required this.street, required this.locality, required this.country});
 }

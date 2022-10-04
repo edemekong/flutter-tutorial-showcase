@@ -1,18 +1,19 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_tutorials/models/place.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:showcasing_flutter/models/place.dart';
 
 class Deley {
   final int milliseconds;
-  VoidCallback action;
-  Timer _timer;
+  VoidCallback? action;
+  Timer? _timer;
 
-  Deley({this.milliseconds});
+  Deley({required this.milliseconds});
+
   run(VoidCallback action) {
     if (null != _timer) {
-      _timer.cancel();
+      _timer?.cancel();
     }
     _timer = Timer(Duration(microseconds: milliseconds), action);
   }
@@ -26,8 +27,7 @@ class LocationApi extends ChangeNotifier {
   var _deley = Deley(milliseconds: 500);
 
   final _controller = StreamController<List<Place>>.broadcast();
-  Stream<List<Place>> get controllerOut =>
-      _controller.stream.asBroadcastStream();
+  Stream<List<Place>> get controllerOut => _controller.stream.asBroadcastStream();
 
   StreamSink<List<Place>> get controllerIn => _controller.sink;
 
@@ -48,8 +48,7 @@ class LocationApi extends ChangeNotifier {
         try {
           List<Location> locations = await locationFromAddress(query);
           locations.forEach((location) async {
-            List<Placemark> placeMarks = await placemarkFromCoordinates(
-                location.latitude, location.longitude);
+            List<Placemark> placeMarks = await placemarkFromCoordinates(location.latitude, location.longitude);
             placeMarks.forEach((placeMark) {
               addPlace(Place(
                 name: placeMark.name,
