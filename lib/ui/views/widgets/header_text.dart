@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class HeaderText extends StatelessWidget {
   const HeaderText({
-    Key key,
-    this.text,
+    Key? key,
+    required this.text,
   }) : super(key: key);
 
   final String text;
@@ -14,8 +14,7 @@ class HeaderText extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: Text(
         '$text',
-        style: TextStyle(
-            fontSize: 16, fontWeight: FontWeight.w600, color: Colors.grey[800]),
+        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.grey[800]),
       ),
     );
   }

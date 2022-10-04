@@ -1,6 +1,6 @@
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
-import 'package:flutter_tutorials/ui/route/route_generator.dart';
-import 'package:flutter_tutorials/ui/views/auth_view/sign_up.dart';
+import '/ui/route/route_generator.dart';
+import '/ui/views/auth_view/sign_up.dart';
 
 class DynamicLinksApi {
   final dynamicLink = FirebaseDynamicLinks.instance;
@@ -24,13 +24,11 @@ class DynamicLinksApi {
       socialMetaTagParameters: SocialMetaTagParameters(
         title: 'Refer A Friend',
         description: 'Refer and earn',
-        imageUrl: Uri.parse(
-            'https://www.insperity.com/wp-content/uploads/Referral-_Program1200x600.png'),
+        imageUrl: Uri.parse('https://www.insperity.com/wp-content/uploads/Referral-_Program1200x600.png'),
       ),
     );
 
-    final ShortDynamicLink shortLink =
-        await dynamicLinkParameters.buildShortLink();
+    final ShortDynamicLink shortLink = await dynamicLinkParameters.buildShortLink();
 
     final Uri dynamicUrl = shortLink.shortUrl;
     print(dynamicUrl);
@@ -38,19 +36,17 @@ class DynamicLinksApi {
   }
 
   void handleSuccessLinking(PendingDynamicLinkData data) {
-    final Uri deepLink = data?.link;
+    final Uri deepLink = data.link;
 
-    if (deepLink != null) {
-      var isRefer = deepLink.pathSegments.contains('refer');
-      if (isRefer) {
-        var code = deepLink.queryParameters['code'];
-        print(code.toString());
-        if (code != null) {
-          GeneratedRoute.navigateTo(
-            SignUpView.routeName,
-            args: code,
-          );
-        }
+    var isRefer = deepLink.pathSegments.contains('refer');
+    if (isRefer) {
+      var code = deepLink.queryParameters['code'];
+      print(code.toString());
+      if (code != null) {
+        GeneratedRoute.navigateTo(
+          SignUpView.routeName,
+          args: code,
+        );
       }
     }
   }

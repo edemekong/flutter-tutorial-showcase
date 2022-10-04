@@ -11,7 +11,7 @@ class CreateReferralCode extends StatefulWidget {
 }
 
 class _CreateReferralCode extends State<CreateReferralCode> {
-  String _referralCode;
+  late String _referralCode;
 
   var referralCodeGenerator = Random();
 

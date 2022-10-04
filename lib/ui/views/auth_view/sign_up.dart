@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorials/ui/route/route_generator.dart';
-import 'package:flutter_tutorials/ui/views/home_view/home_view.dart';
-import 'package:flutter_tutorials/ui/views/widgets/text_fields.dart';
+import '/ui/route/route_generator.dart';
+import '/ui/views/home_view/home_view.dart';
+import '/ui/views/widgets/text_fields.dart';
 
 class SignUpView extends StatelessWidget {
   static const String routeName = '/signUp';
   final String referrarCode;
-  SignUpView({Key key, this.referrarCode}) : super(key: key);
+  SignUpView({Key? key, required this.referrarCode}) : super(key: key);
 
   final TextEditingController referralCodeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    referralCodeController.text = referrarCode ?? '';
+    referralCodeController.text = referrarCode;
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(

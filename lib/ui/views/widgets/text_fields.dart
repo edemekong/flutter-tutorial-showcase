@@ -1,19 +1,21 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 
 class AppTextField extends StatefulWidget {
-  final String title;
-  final TextEditingController controller;
-  final TextInputType keyboardType;
-  final int maxLine;
-  final Function(String) validator;
-  final Function onTapVisibilityIcon;
-  final Function(String) onFieldSubmitted;
-  final bool isPassword;
-  final double radius;
-  final TextInputAction textInputAction;
-  final bool enableTextField;
+  final String? title;
+  final TextEditingController? controller;
+  final TextInputType? keyboardType;
+  final int? maxLine;
+  final Function(String)? validator;
+  final Function()? onTapVisibilityIcon;
+  final Function(String)? onFieldSubmitted;
+  final bool? isPassword;
+  final double? radius;
+  final TextInputAction? textInputAction;
+  final bool? enableTextField;
   const AppTextField({
-    Key key,
+    Key? key,
     this.title,
     this.controller,
     this.keyboardType,
@@ -40,10 +42,9 @@ class _AppTextFieldState extends State<AppTextField> {
       margin: const EdgeInsets.symmetric(horizontal: 12),
       width: MediaQuery.of(context).size.width,
       padding: const EdgeInsets.all(2),
-      decoration:
-          BoxDecoration(borderRadius: BorderRadius.circular(10), boxShadow: [
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), boxShadow: [
         BoxShadow(
-          color: Colors.grey[700].withOpacity(.2),
+          color: Colors.grey[700]!.withOpacity(.2),
           spreadRadius: 2,
           blurRadius: 2,
         )
@@ -59,9 +60,7 @@ class _AppTextFieldState extends State<AppTextField> {
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(8),
           disabledBorder: InputBorder.none,
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(widget.radius ?? 10),
-              borderSide: BorderSide.none),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(widget.radius!), borderSide: BorderSide.none),
           filled: true,
           fillColor: Colors.white,
           hintText: widget.title,

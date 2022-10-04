@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorials/ui/views/home_view/widget/create_referral_code.dart';
-import 'package:flutter_tutorials/view_models/home_view_model.dart';
+
+import '/ui/views/home_view/widget/create_referral_code.dart';
+import '/view_models/home_view_model.dart';
 import 'package:provider/provider.dart';
 
 class HomeView extends StatelessWidget {

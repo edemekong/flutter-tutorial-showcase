@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorials/ui/route/route_generator.dart';
-import 'package:flutter_tutorials/ui/views/auth_view/sign_up.dart';
+import '/ui/route/route_generator.dart';
+import '/ui/views/auth_view/sign_up.dart';
 
 class StartView extends StatefulWidget {
   static const String routeName = '/start';

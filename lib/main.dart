@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_tutorials/ui/get_it/get_it_setup.dart';
-import 'package:flutter_tutorials/ui/route/route_generator.dart';
-import 'package:flutter_tutorials/ui/views/auth_view/start_view.dart';
-import 'package:flutter_tutorials/view_models/home_view_model.dart';
+import 'package:showcasing_flutter/ui/route/route_generator.dart';
+import '../ui/get_it/get_it_setup.dart';
+import '/ui/views/auth_view/start_view.dart';
+import '/view_models/home_view_model.dart';
 import 'package:provider/provider.dart';
+import 'package:showcasing_flutter/ui/get_it/get_it_setup.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
