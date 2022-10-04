@@ -1,11 +1,10 @@
 name: showcasing_flutter
 
-description: Showcasing Flutter awesomeness. Purely for teaching & learning
-  purpose. Flutter/Dart Tips & Tricks.
-
+description: Showcasing Flutter awesomeness. Purely for teaching & learning purpose. Flutter/Dart Tips & Tricks.
 publish_to: "none"
 
 version: 1.0.0+1
+
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
@@ -19,6 +18,8 @@ dependencies:
 
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_lints: ^1.0.0
@@ -26,12 +27,5 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
+  generate: true
   uses-material-design: true
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic

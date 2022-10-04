@@ -1,6 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     package="com.flutterfairy.showcasing_flutter">
     <!-- Flutter needs it to communicate with the running application
+=======
+    package="com.flutterfairy.fluttertutorial">
+    <!-- The INTERNET permission is required for development. Specifically,
+         the Flutter tool needs it to communicate with the running application
+>>>>>>> b2d3570a6db36c8d36981416e5a14578f464e7c0
          to allow setting breakpoints, to provide hot reload, etc.
     -->
     <uses-permission android:name="android.permission.INTERNET"/>

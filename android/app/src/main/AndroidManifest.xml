@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     package="com.flutterfairy.showcasing_flutter">
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
@@ -8,9 +9,16 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="flutter_tutorials"
+=======
+    package="com.flutterfairy.fluttertutorial">
+   <application
+        android:label="test_app"
+        android:name="${applicationName}"
+>>>>>>> b2d3570a6db36c8d36981416e5a14578f464e7c0
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
+            android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -23,15 +31,6 @@
             <meta-data
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
-              />
-            <!-- Displays an Android View that continues showing the launch screen
-                 Drawable until Flutter paints its first frame, then this splash
-                 screen fades out. A splash screen is useful to avoid any visual
-                 gap between the end of Android's launch screen and the painting of
-                 Flutter's first frame. -->
-            <meta-data
-              android:name="io.flutter.embedding.android.SplashScreenDrawable"
-              android:resource="@drawable/launch_background"
               />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
